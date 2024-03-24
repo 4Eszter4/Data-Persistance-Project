@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.IO;
 
 public class MainManager : MonoBehaviour
 {
+    //public static MainManager Instance; // class member declaration; MainManager is the name of the GO i guess
+
     public Brick BrickPrefab;
     public int LineCount = 6;
     public Rigidbody Ball;
@@ -18,7 +21,9 @@ public class MainManager : MonoBehaviour
     
     private bool m_GameOver = false;
 
-    
+    public string playerName;
+    public float score;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +65,8 @@ public class MainManager : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
+        MenuManager.Instance.score = m_Points;
+        MenuManager.Instance.BestScore();
     }
 
     void AddPoint(int point)
@@ -72,5 +79,6 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+        MenuManager.Instance.SaveInfo();
     }
 }
