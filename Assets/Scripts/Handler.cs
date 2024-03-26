@@ -29,8 +29,9 @@ public class Handler : MonoBehaviour
         MenuManager.Instance.BestScore();
         //Save the color
         MenuManager.Instance.SaveInfo();
-        //if UNITY_EDITOR
+        #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
+        #endif
         // if only the built app
         Application.Quit();
     }
