@@ -17,6 +17,7 @@ public class MenuManager : MonoBehaviour
     public string bestScore1;
     public string bestScore2;
     public string bestScore3;
+    public int level;
 
     private void Awake()
     {
@@ -43,6 +44,7 @@ public class MenuManager : MonoBehaviour
         public string bestScore1;
         public string bestScore2;
         public string bestScore3;
+        public int level;
     }
     public void SaveInfo()
     {
@@ -58,6 +60,7 @@ public class MenuManager : MonoBehaviour
         data.bestScore1 = bestScore1;
         data.bestScore2 = bestScore2;
         data.bestScore3 = bestScore3;
+        data.level = level;
         //ransformed that instance to JSON with JsonUtility.ToJson: 
         string json = JsonUtility.ToJson(data);
         // write a string to a file
@@ -81,6 +84,7 @@ public class MenuManager : MonoBehaviour
             bestScore1 = data.bestScore1;
             bestScore2 = data.bestScore2;
             bestScore3 = data.bestScore3;
+            level = data.level;
         }
     }
     public void BestScore()

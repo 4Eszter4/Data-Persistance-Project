@@ -4,6 +4,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+using UnityEngine.SceneManagement;
+using UnityEditor;
+
 public class HighScore : MonoBehaviour
 {
     public float newBest;
@@ -80,5 +83,19 @@ public class HighScore : MonoBehaviour
         MenuManager.Instance.bestScore2 = score2.text;
         MenuManager.Instance.bestScore3 = score3.text;
         MenuManager.Instance.SaveInfo();
+    }
+
+    public void StartButtonFunction()
+    {
+        SceneManager.LoadScene("main");
+    }
+    
+    public void ExitGame()
+    {
+        #if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+        #endif
+        // if only the built app
+        Application.Quit();
     }
 }
